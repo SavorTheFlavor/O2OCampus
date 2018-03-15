@@ -1,4 +1,4 @@
-package com.me.O2OCampus.entity;
+package com.me.o2ocampus.entity;
 
 public class ConstantForSuperAdmin {
 	public static final String PAGE_SIZE = "rows";

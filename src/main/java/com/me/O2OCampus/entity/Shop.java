@@ -1,4 +1,4 @@
-package com.me.O2OCampus.entity;
+package com.me.o2ocampus.entity;
 
 import java.util.Date;
 import java.util.List;
