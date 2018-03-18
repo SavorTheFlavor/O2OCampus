@@ -12,6 +12,7 @@ public class ShopExecution {
 
 	// 结果状态
 	private int state;
+
 	// 状态标识
 	private String stateInfo;
 

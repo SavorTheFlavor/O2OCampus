@@ -22,7 +22,7 @@ public class ImageUtil {
 	 * @param thumbnailFile
 	 * @return
 	 */
-	public static File generateThumbnail(CommonsMultipartFile thumbnailFile, String targetAddr) {
+	public static String generateThumbnail(CommonsMultipartFile thumbnailFile, String targetAddr) {
 		String realFileName = getRandomFileName();
 		String extension = getFileExtension(thumbnailFile);
 		mkdirIfNotExist(targetAddr);
@@ -34,10 +34,11 @@ public class ImageUtil {
 				.watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File(basePath + "/images/watermark.png")), 0.3f)
 				.outputQuality(0.8f)
 				.toFile(destFile);
+			return relativeAddr;
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		return destFile;
+		return null;
 	}
 
 	private static void mkdirIfNotExist(String targetAddr) {
