@@ -20,6 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.me.o2ocampus.dto.ShopExecution;
 import com.me.o2ocampus.entity.PersonInfo;
 import com.me.o2ocampus.entity.Shop;
+import com.me.o2ocampus.entity.ShopCategory;
 import com.me.o2ocampus.enums.ShopStateEnum;
 import com.me.o2ocampus.service.ShopService;
 import com.me.o2ocampus.util.CodeUtil;
@@ -36,6 +37,7 @@ public class ShopManagementController {
 	@ResponseBody
 	private Map<String, Object> getShopInfo(HttpServletRequest request) {
 		Map<String, Object> modelMap = new HashMap<String, Object>();
+		List<ShopCategory> shopCategories = new ArrayList<>();
 		return modelMap;
 	}
 	
@@ -56,13 +58,8 @@ public class ShopManagementController {
 		CommonsMultipartResolver multipartResolver = 
 				new CommonsMultipartResolver(request.getServletContext());
 		if (multipartResolver.isMultipart(request)) {
-			multipartRequest = (MultipartHttpServletRequest) request;
-			shopImg = (CommonsMultipartFile) multipartRequest
-					.getFile("shopImg");
-		} else {
-			modelMap.put("success", false);
-			modelMap.put("errMsg", "上传图片不能为空");
-			return modelMap;
+			multipartRequest = (MultipartHttpServletRequest)request;
+			shopImg = (CommonsMultipartFile) multipartRequest.getFile("shopImg");
 		}
 		try {
 			shop = mapper.readValue(shopStr, Shop.class);
